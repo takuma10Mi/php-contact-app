@@ -8,7 +8,8 @@
   if(mysqli_connect_error()){
       die("データーベースへの接続に失敗しました。");
   }
-  // session_start();sessionを使うためのメモ
+  // sessionを使うためのメモ
+  session_start();
   // issetは変数に値が入っているか確かめる関数。なので今回はbtn_submitが押されたときの処理
   if ( isset ($_POST["btn_submit"] ) ){
     // バリデーションのための変数
@@ -23,49 +24,79 @@
     $email_vali="/^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/";
     // メールアドレスのチェック
     if(empty($email)|| empty($email2)){
+      
       echo "<p>メールアドレス入力してください。</p>";
+      $error_mail = true;
     }elseif($email !== $email2){
+      
         echo "<p>メールアドレスが一致していません。</p>";
+        $error_mail = true;
     }elseif(!preg_match($email_vali,$email)){
+      
       echo "<p>使える文字はアルファベット大文字小文字 (a~z, A~Z) 、数字 (0~9)、記号 (. _ -)です。</p>";
+      $error_mail = true;
     }else{
       "正しいメールアドレスです。";
+      $error_mail = false;
     }
 
     // 名前の入力チェック
     if( empty($name_first_full)){
+      
       echo "<p>名前（姓）を入力してください。</p>" ;
+      $error_name =true;
     } 
     elseif( $name_last_full == ''){
+      
       echo "<p>名前（名）を入力してください。</p>";
+      $error_name =true;
     } elseif($name_first_cana == ''){
+      
       echo "<p>フリガナ（セイ）を入力してください。</p>";
+      $error_name =true;
     }
     elseif( $name_last_cana== ''){
+      
       echo "<p>フリガナ（メイ）を入力してください。</p>";
+      $error_name =true;
     }
     elseif(preg_match("/[^ァ-ヶー]/u",$name_first_cana)){
-      echo "<p>フリガナ（セイ）をフリガナで入力してください１。</p>";
+      
+      echo "<p>フリガナ（セイ）をフリガナで入力してください。</p>";
+      $error_name =true;
     }
     elseif(preg_match("/[^ァ-ヶー]/u",$name_last_cana)){
+      
       echo "<p>フリガナ（メイ）フリガナで入力してください。</p>";
+      $error_name =true;
     }
     elseif( $name_first_cana== ''){
+      
       echo "<p>フリガナ（メイ）を入力してください。</p>";
     }else{
       echo "名前を入力○";
+      $error_name =false;
     }
 
     // 電話番号チェック
-    if(empty($email)){
+    if(empty($phone)){
       echo "<p>電話番号を入力してください。</p>";
+      $error_phone =true;
     }
-    elseif(preg_match("/^[0-9]{9-11}$/",$phone)){
+    elseif(!preg_match("/^[0-9]{9-11}$/",$phone)){
+      
       echo "<p>電話番号はハイフン抜き半角数字9~11桁で入力してください。</p>";
+      $error_phone =true;
     }
     else{
       echo "電話番号○";
+      $error_phone =false;
       
+    }
+    if($error_mail == false && $error_name == false && $error_phone== false){
+      "";
+    }else{
+      // header('Location: index.php');
     }
   } 
 
