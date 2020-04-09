@@ -1,0 +1,14 @@
+p{
+  color: red;
+}
+ul {
+  list-style: none;
+}
+li{
+  padding: 0.8em;
+  display: flex;
+}
+label,input,textarea{
+  display: block;
+  border-color: beige;
+}
