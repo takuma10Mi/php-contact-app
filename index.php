@@ -129,7 +129,7 @@
       </li>
       <li>
       <label for="">フリガナ（メイ）</label>
-      <input type="text" name="name_last_cana" placeholder="（例）太郎" value="<?php if( !empty($name_last_cana) ){ echo h($name_last_cana); } ?>">
+      <input type="text" name="name_last_cana" placeholder="（例）タロウ" value="<?php if( !empty($name_last_cana) ){ echo h($name_last_cana); } ?>">
       </li>
       <li>
       <label for="">電話番号</label>
