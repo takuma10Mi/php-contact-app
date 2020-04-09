@@ -83,7 +83,7 @@
       echo "<p>電話番号を入力してください。</p>";
       $error_phone =true;
     }
-    elseif(!preg_match("/^[0-9]{9-11}$/",$phone)){
+    elseif(preg_match("/^[0-9]{9-11}$/",$phone)){
       
       echo "<p>電話番号はハイフン抜き半角数字9~11桁で入力してください。</p>";
       $error_phone =true;
