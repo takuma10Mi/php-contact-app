@@ -6,7 +6,9 @@ if($_SERVER["REQUEST_METHOD"] != "POST"){
     header('Location: index.php'); 
     exit;
 }
-
+function h($s) {
+  return htmlspecialchars($s, ENT_QUOTES, "UTF-8");
+}
 if($_POST['content']){
   echo "sendボタンが押されました。";
   $query = "INSERT INTO `users`(`name_first_full`,`name_last_full`,`name_first_cana`,`name_last_cana`,`phone`,`email`,`content`) VALUES 
@@ -22,7 +24,7 @@ if($_POST['content']){
 <head>
 <meta charset="UTF-8">
 <title>お問い合わせ確認ページ</title>
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="stylesheet/css/styles.css">
 
 </head>
 <body>
