@@ -1,7 +1,6 @@
 <?php
 $link = mysqli_connect("localhost", "root", "root","memberapp");
 // リクエストでPOSTメソッドではないのがきたらindex.phpへリダイレクト
-var_dump($_POST);
 if($_SERVER["REQUEST_METHOD"] != "POST"){
     header('Location: index.php'); 
     exit;
@@ -31,19 +30,19 @@ if($_POST['content']){
   <div class="input-form">
   <form  method="post"  action= "thanks.php">
     <p>名前（姓）<?php echo $_POST['name_first_full']; ?></p>
-    <input type="hidden" name="name_first_full" value=""<?php echo $_POST['name_first_full']; ?>>
+    <input type="hidden" name="name_first_full" value="<?php echo $_POST['name_first_full']; ?>">
     <p>名前（名）<?php echo $_POST['name_last_full']; ?></p>
-    <input type="hidden" name="name_last_full" value=""<?php echo $_POST['name_last_full']; ?>>
+    <input type="hidden" name="name_last_full" value="<?php echo $_POST['name_last_full']; ?>">
     <p>フリガナ（セイ）<?php echo $_POST['name_first_cana']; ?></p>
-    <input type="hidden" name="name_first_cana" value=""<?php echo $_POST['name_first_cana']; ?>>
+    <input type="hidden" name="name_first_cana" value="<?php echo $_POST['name_first_cana']; ?>">
     <p>フリガナ（メイ）<?php echo $_POST['name_last_cana']; ?></p>
-    <input type="hidden" name="name_last_cana" value=""<?php echo $_POST['name_last_cana']; ?>>
+    <input type="hidden" name="name_last_cana" value="<?php echo $_POST['name_last_cana']; ?>">
     <p>電話番号<?php echo $_POST['phone']; ?></p>
-    <input type="hidden" name="phone" value=""<?php echo $_POST['phone']; ?>>
+    <input type="hidden" name="phone" value="<?php echo $_POST['phone']; ?>">
     <p>メールアドレス<?php echo $_POST['email']; ?></p>
-    <input type="hidden" name="email" value=""<?php echo $_POST['email']; ?>>
+    <input type="hidden" name="email" value="<?php echo $_POST['email']; ?>">
     <p>お問い合わせ内容<?php echo $_POST['content']; ?></p>
-    <input type="hidden" name="content" value=""<?php echo $_POST['content']; ?>>
+    <input type="hidden" name="content" value="<?php echo $_POST['content']; ?>">
     <input type="submit" value="登録する">
   </form>
 </body>
