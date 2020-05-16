@@ -5,9 +5,11 @@ if($_SERVER["REQUEST_METHOD"] != "POST"){
     header('Location: index.php'); 
     exit;
 }
-function h($s) {
-  return htmlspecialchars($s, ENT_QUOTES, "UTF-8");
-}
+$_POST = $_SESSION['confirm_data'];
+
+// function h($s) {
+//   return htmlspecialchars($s, ENT_QUOTES, "UTF-8");
+// }
 if($_POST['content']){
   echo "sendボタンが押されました。";
   $query = "INSERT INTO `users`(`name_first_full`,`name_last_full`,`name_first_cana`,`name_last_cana`,`phone`,`email`,`content`) VALUES 
