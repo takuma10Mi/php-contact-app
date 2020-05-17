@@ -12,7 +12,7 @@ MAMP 環境
 
 # <入力ページ>
 
-<img width="292" alt="スクリーンショット 2020-05-17 22 03 42" src="https://user-images.githubusercontent.com/54714018/82147869-b56e4400-988b-11ea-8384-48a85207b991.png">
+<img width="287" alt="スクリーンショット 2020-05-17 22 08 52" src="https://user-images.githubusercontent.com/54714018/82148216-e5b6e200-988d-11ea-8cd0-4b72db5491e3.png">
 
 # <確認ページ>
 
