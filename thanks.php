@@ -14,6 +14,10 @@
   $sql = 'SELECT * FROM users WHERE id = (SELECT MAX(id) FROM users)' ;
   $result = $link->query($sql);
   
+  if( $result ) {
+    // fetch_all結果データを全件まとめて配列で取得
+    var_dump($result->fetch_all());
+  }
   // データベースとの接続を解除
   $link->close();
 ?>

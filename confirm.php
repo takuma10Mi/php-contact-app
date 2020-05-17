@@ -9,7 +9,7 @@ if (!isset($_SESSION['confirm_data'])) {
 
 $_POST = $_SESSION['confirm_data'];
 
-if($_POST['content']){
+if($_POST['submit']){
   $query = "INSERT INTO `users`(`name_first_full`,`name_last_full`,`name_first_cana`,`name_last_cana`,`phone`,`email`,`content`) VALUES 
   ('".mysqli_real_escape_string($link,$_POST['name_first_full'])."','".mysqli_real_escape_string($link,$_POST['name_last_full'])."','".mysqli_real_escape_string($link,$_POST['name_first_cana'])."','".mysqli_real_escape_string($link,$_POST['name_last_cana'])."','".mysqli_real_escape_string($link,$_POST['phone'])."','".mysqli_real_escape_string($link,$_POST['email'])."','".mysqli_real_escape_string($link,$_POST['content'])."')";
 }
@@ -31,7 +31,6 @@ if($_POST['content']){
     <p>電話番号<?php echo htmlspecialchars($_POST['name_last_cana'],ENT_QUOTES);?></p>
     <p>メールアドレス<?php echo htmlspecialchars($_POST['email'],ENT_QUOTES);?></p>
     <p>お問い合わせ内容<?php echo htmlspecialchars($_POST['content'],ENT_QUOTES);?></p>
-    <input type="hidden" name="content" value="<?php echo $_POST['content']; ?>">
     <input type="submit" value="登録する">
     <p><a href="./index.php">戻る</a></p>
   </form>
