@@ -1,19 +1,12 @@
 <?php
-  // エスケープ処理ｈという関数に設定してコードを短くした。
-  function h($s) {
-    return htmlspecialchars($s, ENT_QUOTES, "UTF-8");
-  }
+
   $link = mysqli_connect("localhost", "root", "root","memberapp");
   // サーバー名・データベースのユーザー名・パスワード・DB名
   if(mysqli_connect_error()){
       die("データーベースへの接続に失敗しました。");
   }
-  // sessionを使うためのメモ
   session_start();
-  // issetは変数に値が入っているか確かめる関数。なので今回はbtn_submitが押されたときの処理
-    // バリデーションのための変数
-    $errormessage = array();
-    if ( !empty($_POST) && empty($_SESSION['confirm_data'])){
+  if ( !empty($_POST) && empty($_SESSION['confirm_data'])){
     $email=$_POST['email'];
     $email2=$_POST['email2'];
     $name_first_full=$_POST['name_first_full'];
@@ -26,7 +19,6 @@
     
     // メールアドレスのチェック
     if(empty($email)|| empty($email2)){
-      
       $error_message['email']= "<p>メールアドレス入力してください。</p>";
       
     }elseif($email !== $email2){
@@ -101,16 +93,18 @@
     }
     if (empty($error_message)) {
       $_SESSION['confirm_data'] = $_POST;
+      
       header('Location:./confirm.php');
       
       exit();
   
-    } elseif (!empty($_SESSION['confirm_data'])) {
-    $_POST = $_SESSION['confirm_data'];
-    }
-    session_destroy();
+    } 
   }
-  
+  elseif (!empty($_SESSION['confirm_data'])) {
+  $_POST = $_SESSION['confirm_data'];
+  }
+  session_destroy();
+
 ?>
 <html lang="ja">
 <head>
@@ -166,7 +160,7 @@
       <span class="color"> <?php echo isset($error_message['content']) ? $error_message['content'] : ''; ?></span>
       </li>
       <li>
-      <input type="submit" name="btn_submit" value="登録する">
+      <input type="submit" name="btn_submit" value="確認する">
       </li>
     </ul>
   </form>
